@@ -1,0 +1,5 @@
+.env
+__pycache__/
+*.pyc
+his_tribes.db
+.venv/

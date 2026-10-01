@@ -1,0 +1,535 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/* =========================================================
+   HIS TRIBES — WATERCOLOUR THEME
+   ========================================================= */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--panel);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--panel-strong);
+  --color-popover-foreground: var(--foreground);
+
+  --color-primary: var(--brand);
+  --color-primary-foreground: white;
+
+  --color-secondary: var(--panel-strong);
+  --color-secondary-foreground: var(--foreground);
+
+  --color-muted: var(--line);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--foreground);
+
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: white;
+
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--brand);
+
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-panel-strong: var(--panel-strong);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-good: var(--good);
+  --color-rose: var(--rose);
+  --color-danger: var(--danger);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+
+/* =========================================================
+   MAIN COLORS
+   ========================================================= */
+
+:root {
+  /* Warm white */
+  --canvas: #FCFBF7;
+  --background: #FCFBF7;
+
+  /* Text */
+  --foreground: #403C4A;
+  --muted-foreground: #77727D;
+
+  /* Cards */
+  --panel: rgba(255, 255, 255, 0.90);
+  --panel-strong: rgba(255, 255, 255, 0.96);
+
+  /* Borders */
+  --line: #E8E2E5;
+
+  /* Main lavender */
+  --brand: #8B78B8;
+
+  /* Watercolour colors */
+  --accent: #CFE7F4;
+  --good: #91B9A5;
+  --rose: #EFC9D8;
+  --danger: #C98282;
+
+  --radius: 0.9rem;
+}
+
+
+/* =========================================================
+   BASIC PAGE
+   ========================================================= */
+
+@layer base {
+
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    background: var(--background);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+      radial-gradient(
+        circle at 10% 5%,
+        rgba(217, 208, 242, 0.30),
+        transparent 28rem
+      ),
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(207, 231, 244, 0.30),
+        transparent 28rem
+      ),
+      radial-gradient(
+        circle at 50% 100%,
+        rgba(246, 208, 184, 0.18),
+        transparent 30rem
+      ),
+      #FCFBF7;
+
+    color: var(--foreground);
+
+    font-family: "Inter", sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button,
+  a,
+  input,
+  textarea {
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: rgba(139, 120, 184, 0.20);
+    color: var(--foreground);
+  }
+}
+
+
+/* =========================================================
+   GENERAL BACKGROUND
+   ========================================================= */
+
+@utility ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 5% 0%,
+      rgba(217, 208, 242, 0.25),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgba(207, 231, 244, 0.22),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(239, 201, 216, 0.16),
+      transparent 30rem
+    );
+}
+
+
+/* =========================================================
+   SOFT HERO LIGHT
+   ========================================================= */
+
+@utility hero-glow {
+  position: absolute;
+
+  width: 20rem;
+  height: 20rem;
+
+  right: -6rem;
+  top: -7rem;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 120, 184, 0.16),
+      transparent 68%
+    );
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   INPUT FIELDS
+   ========================================================= */
+
+@utility field {
+  width: 100%;
+
+  border-radius: 0.75rem;
+
+  border: 1px solid #E5DFE5;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  padding: 0.75rem 0.875rem;
+
+  color: #403C4A;
+
+  font-size: 0.875rem;
+
+  box-shadow:
+    0 2px 8px rgba(64, 60, 74, 0.04);
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+
+  &:hover {
+    border-color: #CFC4DF;
+  }
+
+  &:focus {
+    border-color: #8B78B8;
+
+    outline: none;
+
+    box-shadow:
+      0 0 0 3px rgba(139, 120, 184, 0.13);
+  }
+
+  &::placeholder {
+    color: #9A959E;
+  }
+}
+
+
+/* =========================================================
+   SMALL LABELS
+   ========================================================= */
+
+@utility eyebrow {
+  font-size: 0.6875rem;
+
+  line-height: 1rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.15em;
+
+  color: #8B78B8;
+
+  font-weight: 600;
+}
+
+
+@utility stat-label {
+  font-size: 0.6875rem;
+
+  line-height: 1rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.15em;
+
+  color: #77727D;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   STAT NUMBERS
+   ========================================================= */
+
+@utility stat-value {
+  margin-top: 0.5rem;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 1.875rem;
+
+  line-height: 2.25rem;
+
+  font-weight: 700;
+
+  color: #403C4A;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+
+@utility status {
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #EEE9F7,
+      #E5F2F8
+    );
+
+  color: #6E5B99;
+
+  padding: 0.2rem 0.55rem;
+
+  font-size: 0.625rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card,
+.bg-card {
+  background: rgba(255, 255, 255, 0.90);
+
+  border-color: #E8E2E5;
+
+  box-shadow:
+    0 8px 30px rgba(64, 60, 74, 0.055);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button.bg-primary,
+.bg-primary {
+  background: #8B78B8;
+  color: white;
+}
+
+button.bg-primary:hover,
+.bg-primary:hover {
+  background: #7865A8;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: #806CAF;
+
+  transition: color 160ms ease;
+}
+
+a:hover {
+  color: #66538F;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F6F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5CCDF;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B9ADD0;
+}
+
+
+/* =========================================================
+   SIGNUP BACKGROUND
+   ========================================================= */
+
+/*
+   The signup page can use the watercolor image
+   placed at:
+
+   public/images/signup-bg.png
+*/
+
+.signup-page {
+  min-height: 100vh;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(252, 251, 247, 0.20),
+      rgba(252, 251, 247, 0.05)
+    ),
+    url("/images/signup-bg.png");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* =========================================================
+   SIGNUP CARD
+   ========================================================= */
+
+.signup-card {
+  background: rgba(255, 255, 255, 0.93);
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.80);
+
+  border-radius: 1.25rem;
+
+  box-shadow:
+    0 20px 60px rgba(64, 60, 74, 0.12);
+}
+
+
+/* =========================================================
+   SIGNUP BUTTON
+   ========================================================= */
+
+.signup-button {
+  background: #8B78B8;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 0.75rem;
+
+  padding: 0.75rem 1rem;
+
+  font-weight: 600;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.signup-button:hover {
+  background: #7865A8;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px rgba(139, 120, 184, 0.25);
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+
+    animation-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .signup-page {
+    padding: 1rem;
+
+    background-position: center;
+  }
+
+  .signup-card {
+    width: 100%;
+  }
+}
+/* =========================================================
+   HIS TRIBES - LOGIN / SIGNUP BACKGROUND
+   ========================================================= */
+
+.auth-page {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      rgba(252, 251, 247, 0.18),
+      rgba(252, 251, 247, 0.18)
+    ),
+    url("/images/signup-bg.png");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

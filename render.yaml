@@ -1,0 +1,35 @@
+# Deployment blueprint. Set secrets in the Render dashboard, not in this file.
+services:
+  - type: web
+    name: his-tribes-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.5
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: SEED_LEADER_EMAIL
+        sync: false
+      - key: SEED_LEADER_PASSWORD
+        sync: false
+      - key: SEED_LEADER_NAME
+        sync: false
+
+  - type: web
+    name: his-tribes-web
+    runtime: node
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NITRO_PRESET
+        value: render-com
+      - key: VITE_API_URL
+        sync: false
